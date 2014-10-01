@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+targetCompatibility = 1.7
+sourceCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.encog:encog-core:3.3.0'
+}
+
+task(runExample, group: 'examples', description: 'Run the sample stand-alone project.',
+        dependsOn: 'classes', type: JavaExec) {
+    main = 'HelloWorld'
+    classpath = sourceSets.main.runtimeClasspath
+}
